@@ -7,7 +7,7 @@ public class VideoRepositoryImpl implements VideoRepository {
 	private VideoRepositoryImpl() {
 	}
 
-	static VideoRepository getInstance() {
+	public static VideoRepositoryImpl getInstance() {
 		return instance;
 	}
 	
