@@ -1,4 +1,4 @@
-package main.java.com.ssafy.ssafit.model.dto;
+package com.ssafy.ssafit.model.dto;
 
 import java.time.LocalDate;
 

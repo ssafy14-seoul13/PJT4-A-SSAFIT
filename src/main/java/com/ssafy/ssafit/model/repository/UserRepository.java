@@ -1,4 +1,4 @@
-package main.java.com.ssafy.ssafit.model.repository;
+package com.ssafy.ssafit.model.repository;
 
 public class UserRepository {
 
