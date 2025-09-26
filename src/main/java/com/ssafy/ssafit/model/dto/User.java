@@ -1,6 +1,4 @@
-package main.java.com.ssafy.ssafit.model.dto;
-
-import java.util.List;
+package com.ssafy.ssafit.model.dto;
 
 import java.util.List;
 

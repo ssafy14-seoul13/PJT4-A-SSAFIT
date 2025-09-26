@@ -1,4 +1,4 @@
-package main.java.com.ssafy.ssafit.controller;
+package com.ssafy.ssafit.controller;
 
 import java.io.IOException;
 
