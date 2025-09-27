@@ -19,10 +19,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User register(String id, String password) {
-		User user = new User(id, password);
-		repo.save(user);
-		return user;
+	public String register(String id, String pw, String confirmPw) {
+	    if (id == null || pw == null || confirmPw == null 
+	        || id.trim().isEmpty() || pw.trim().isEmpty() || confirmPw.trim().isEmpty()) {
+	        return "아이디와 비밀번호는 필수로 입력해야 합니다.";
+	    }
+
+	    if (findUser(id.trim()) != null) {
+	        return "이미 존재하는 아이디입니다.";
+	    }
+
+	    if (!pw.equals(confirmPw)) {
+	        return "비밀번호가 일치하지 않습니다.";
+	    }
+
+	    repo.save(new User(id.trim(), pw.trim()));
+	    return null; // null이면 회원가입 성공
 	}
 
 	@Override
@@ -31,8 +43,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean updateUser(User user) {
-		return repo.update(user);
+	public boolean updatePassword(User user, String pw, String confirmPw) {
+		// 값이 null 인 경우
+	    if (user == null) {
+	    	return false;
+	    }
+	    
+	    if (pw == null || confirmPw == null || pw.trim().isEmpty() || confirmPw.trim().isEmpty()) {
+	    	return false;
+	    }
+	    
+	    // 비밀번호가 일치하지 않는 경우
+	    if (!pw.equals(confirmPw)) {
+	    	return false;
+	    }
+
+	    user.setPassword(pw.trim());
+	    return repo.update(user);
 	}
 
 	@Override
@@ -41,16 +68,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User login(String id, String password) {
-		User user = findUser(id);
-		
-		if (user == null) {
-			return null;
-		}
-		if (!user.getPassword().equals(password)) {
-			return null;
-		}
-		return user;
+	public User login(String id, String pw) {
+	    if (id == null || pw == null || id.trim().isEmpty() || pw.trim().isEmpty()) {
+	        return null;
+	    }
+
+	    User user = findUser(id.trim());
+	    if (user == null || !user.getPassword().equals(pw.trim())) {
+	        return null;
+	    }
+	    return user;
 	}
 
 	@Override
