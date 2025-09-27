@@ -1,25 +1,24 @@
 package com.ssafy.ssafit.model.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+	private static int sequence = 1;
+	
 	private int no;
 	private String id;
-	private String password;
-	private String email;
-	
+	private String password;	
 	private List<String> savedVideoList;
 
 	public User() {
 	}
 	
-	public User(int no, String id, String password, String email, List<String> savedVideoList) {
-		super();
-		this.no = no;
+	public User(String id, String password) {
+		this.no = sequence++;
 		this.id = id;
 		this.password = password;
-		this.email = email;
-		this.savedVideoList = savedVideoList;
+		this.savedVideoList = new ArrayList<>();
 	}
 
 	public int getNo() {
@@ -46,14 +45,6 @@ public class User {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public List<String> getSavedVideoList() {
 		return savedVideoList;
 	}
@@ -64,10 +55,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [no=" + no + ", id=" + id + ", password=" + password + ", email=" + email + ", savedVideoList="
-				+ savedVideoList + "]";
+		return "User [no=" + no + ", id=" + id + ", password=" + password + ", savedVideoList=" + savedVideoList + "]";
 	}
-	
-	
-	
+
 }
