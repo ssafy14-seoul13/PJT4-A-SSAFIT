@@ -34,7 +34,8 @@
 
     <%-- 공통 메뉴 --%>
     <ul>
-        <li><a href="videos.jsp">운동 영상</a></li>
+        <li><a href="${pageContext.request.contextPath}/video?act=list">운동 영상</a></li>
+        <li><a href="${pageContext.request.contextPath}/video?act=videoForm">새 영상 등록</a></li>
         <li><a href="community.jsp">커뮤니티</a></li>
     </ul>
 </body>
