@@ -7,11 +7,11 @@ import com.ssafy.ssafit.model.dto.User;
 import jakarta.servlet.http.HttpSession;
 
 public interface UserService {
-	User register(String id, String password);
-	User findUser(String id);
-	boolean updateUser(User user);
-	boolean deactivateUser(String id);
+	String register(String id, String password, String confirmPw);
 	User login(String id, String password);
-	void logout(HttpSession session);
-	List<User> listUser();
+    boolean updatePassword(User user, String pw, String confirmPw);
+    boolean deactivateUser(String id); 
+    User findUser(String id);
+    List<User> listUser();
+    void logout(HttpSession session);
 }
