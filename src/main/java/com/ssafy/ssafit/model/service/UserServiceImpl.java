@@ -42,12 +42,22 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User login(String id, String password) {
-		return null;
+		User user = findUser(id);
+		
+		if (user == null) {
+			return null;
+		}
+		if (!user.getPassword().equals(password)) {
+			return null;
+		}
+		return user;
 	}
 
 	@Override
 	public void logout(HttpSession session) {
-		
+		if (session != null) {
+			session.invalidate();
+		}
 	}
 
 	@Override
