@@ -90,19 +90,83 @@ public class UserController extends HttpServlet {
 	}
 
 	private void doUserProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
 		
+		if (loginUser == null) {
+			response.sendRedirect("user?act=loginForm");
+			return;
+		}
+		
+		request.setAttribute("user", loginUser);
+		request.getRequestDispatcher("/WEB-INF/user/mypage.jsp").forward(request, response);
 	}
 
 	private void doUserEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+
+		if (loginUser == null) {
+			response.sendRedirect("user?act=loginForm");
+			return;
+		}
 		
+		request.setAttribute("user", loginUser);
+		request.getRequestDispatcher("/WEB-INF/user/mypageEdit.jsp").forward(request, response);
 	}
 
 	private void doUserUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
 		
+		if (loginUser == null) {
+	        response.sendRedirect("user?act=loginForm");
+	        return;
+	    }
+		
+		String pw = request.getParameter("password");
+	    String confirmPw = request.getParameter("confirmPassword");
+
+	    if (pw == null || confirmPw == null || pw.trim().isEmpty() || confirmPw.trim().isEmpty()) {
+	        request.setAttribute("errorMsg", "변경하려는 비밀번호를 입력해주세요.");
+	        request.getRequestDispatcher("/WEB-INF/user/mypageEdit.jsp").forward(request, response);
+	        return;
+	    }
+
+	    if (!pw.equals(confirmPw)) {
+	        request.setAttribute("errorMsg", "비밀번호가 일치하지 않습니다.");
+	        request.getRequestDispatcher("/WEB-INF/user/mypageEdit.jsp").forward(request, response);
+	        return;
+	    }
+
+	    // 수정 반영
+	    loginUser.setPassword(pw);
+	    
+	    if (userService.updateUser(loginUser)) {
+	        // 세션 갱신
+	        request.getSession().setAttribute("loginUser", loginUser);
+	        response.sendRedirect("user?act=userProfile");
+	    } else {
+	        request.setAttribute("errorMsg", "회원정보 수정에 실패했습니다.");
+	        request.getRequestDispatcher("/WEB-INF/user/mypageEdit.jsp").forward(request, response);
+	    }
 	}
 
 	private void doUserDeactivate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
 		
+		if (loginUser == null) {
+	        response.sendRedirect("user?act=loginForm");
+	        return;
+	    }
+
+	    boolean deleted = userService.deactivateUser(loginUser.getId());
+
+	    if (deleted) {
+	        // 세션 종료 후 메인으로 이동
+	        request.getSession().invalidate();
+	        response.sendRedirect("index.jsp");
+	    } else {
+	        request.setAttribute("errorMsg", "회원 탈퇴에 실패했습니다.");
+	        request.getRequestDispatcher("/WEB-INF/user/mypage.jsp").forward(request, response);
+	    }
 	}
 
 	private void doLoginForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

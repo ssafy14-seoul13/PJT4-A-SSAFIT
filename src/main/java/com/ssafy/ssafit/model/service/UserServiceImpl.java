@@ -32,12 +32,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updateUser(User user) {
-		return false;
+		return repo.update(user);
 	}
 
 	@Override
 	public boolean deactivateUser(String id) {
-		return false;
+		return repo.delete(id);
 	}
 
 	@Override
