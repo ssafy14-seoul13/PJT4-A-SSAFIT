@@ -3,77 +3,66 @@
     "no": 1,
     "id": "user01",
     "password": "passUser01",
-    "email": "user01@example.com",
     "savedVideoList": ["1", "3", "7"] 
   },
   {
     "no": 2,
     "id": "user02",
     "password": "passUser02",
-    "email": "user02@example.com",
     "savedVideoList": ["2", "4", "6", "8"]
   },
   {
     "no": 3,
     "id": "user03",
     "password": "passUser03",
-    "email": "user03@example.com",
     "savedVideoList": ["5", "6"]
   },
   {
     "no": 4,
     "id": "user04",
     "password": "passUser04",
-    "email": "user04@example.com",
     "savedVideoList": ["1", "2", "3", "4", "5", "6", "7", "8"]
   },
   {
     "no": 5,
     "id": "user05",
     "password": "passUser05",
-    "email": "user05@example.com",
     "savedVideoList": ["7", "8"]
   },
   {
     "no": 6,
     "id": "user06",
     "password": "passUser06",
-    "email": "user06@example.com",
     "savedVideoList": ["1"]
   },
   {
     "no": 7,
     "id": "user07",
     "password": "passUser07",
-    "email": "user07@example.com",
     "savedVideoList": ["3", "4"]
   },
   {
     "no": 8,
     "id": "user08",
     "password": "passUser08",
-    "email": "user08@example.com",
     "savedVideoList": []
   },
   {
     "no": 9,
     "id": "user09",
     "password": "passUser09",
-    "email": "user09@example.com",
     "savedVideoList": ["2", "5", "7"]
   },
   {
     "no": 10,
     "id": "user10",
     "password": "passUser10",
-    "email": "user10@example.com",
     "savedVideoList": ["6", "8", "3"]
   },
   {
     "no": 11,
     "id": "poweruser",
     "password": "passPower11",
-    "email": "poweruser@example.com",
     "savedVideoList": ["1", "5", "7"]
   },
   {
@@ -136,7 +125,6 @@
     "no": 20,
     "id": "active_gal",
     "password": "passActive20",
-    "email": "active_gal@example.com",
     "savedVideoList": ["1", "2", "3", "4", "5", "6", "7", "8"]
   }
 ]
