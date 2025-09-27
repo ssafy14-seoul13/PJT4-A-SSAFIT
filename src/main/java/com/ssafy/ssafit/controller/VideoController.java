@@ -105,7 +105,7 @@ public class VideoController extends HttpServlet {
 		Video video = videoService.getVideo(no);
 		
 		req.setAttribute("video", video);
-		req.getRequestDispatcher("/WEB-INF/video/videoEditForm.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/video/videoEdit.jsp").forward(req, resp);
 
 	}
 
