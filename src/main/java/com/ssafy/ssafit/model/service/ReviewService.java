@@ -6,7 +6,7 @@ import com.ssafy.ssafit.model.dto.Review;
 
 public interface ReviewService {
 
-	List<Review> getReviewList(String vno);
+	List<Review> getReviewList(int vno);
 
 	Review getReview(int no);
 

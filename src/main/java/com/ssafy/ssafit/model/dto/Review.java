@@ -7,14 +7,14 @@ public class Review {
 	private String title;
 	private String content;
 	private String writer;
-	private String vno;	// 영상no
+	private int vno;	// 영상no
 	private int viewCnt;// 조회수
 	private LocalDate created_at;
 	private LocalDate updated_at;
 	
 	public Review() {}
 
-	public Review(int no, String title, String content, String writer, String vno, int viewCnt, LocalDate created_at,
+	public Review(int no, String title, String content, String writer, int vno, int viewCnt, LocalDate created_at,
 			LocalDate updated_at) {
 		super();
 		this.no = no;
@@ -59,11 +59,11 @@ public class Review {
 		this.writer = writer;
 	}
 
-	public String getVno() {
+	public int getVno() {
 		return vno;
 	}
 
-	public void setVno(String vno) {
+	public void setVno(int vno) {
 		this.vno = vno;
 	}
 

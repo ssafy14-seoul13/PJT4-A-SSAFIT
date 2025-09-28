@@ -19,7 +19,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	@Override
-	public List<Review> getReviewList(String vno) {
+	public List<Review> getReviewList(int vno) {
 		return reviewRepository.selectAll(vno);
 	}
 	
