@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +32,39 @@
 	        </form>
 	    </p>
 	</c:if>
+	
 	<c:if test="${empty video}">
 	    <p>요청하신 영상을 찾을 수 없습니다.</p>
+	</c:if>
+	
+	<h3>리뷰</h3>
+	<c:choose>
+	  <c:when test="${empty reviewList}">
+	    <p>등록된 리뷰가 없습니다.</p>
+	  </c:when>
+	  <c:otherwise>
+	    <ul>
+	      <c:forEach var="rv" items="${reviewList}">
+	        <li>
+	          <strong>${rv.title}</strong> - ${rv.writer}
+	          <br/>
+	          ${rv.content}
+	          <br/>
+	          <a href="${pageContext.request.contextPath}/review?act=reviewEditForm&no=${rv.no}">수정</a>
+	          <form action="${pageContext.request.contextPath}/review?act=reviewDelete" method="post" style="display:inline;">
+	            <input type="hidden" name="no" value="${rv.no}">
+	            <button type="submit" onclick="return confirm('리뷰를 삭제하시겠습니까?');">삭제</button>
+	          </form>
+	        </li>
+	      </c:forEach>
+	    </ul>
+	  </c:otherwise>
+	</c:choose>
+	
+	<c:if test="${not empty sessionScope.loginUser}">
+	  <p>
+	    <a href="${pageContext.request.contextPath}/review?act=reviewForm&vno=${video.no}">리뷰 작성</a>
+	  </p>
 	</c:if>
 	
 	<p><a href="${pageContext.request.contextPath}/video?act=list">목록으로 돌아가기</a></p>
