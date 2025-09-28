@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>영상 수정</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/css/common.css">
 <style>
 /* 기본 설정 */
 body {
@@ -96,6 +98,7 @@ form button[type="button"]:hover {
 </style>
 </head>
 <body>
+	<%@ include file="/WEB-INF/common/header.jsp"%>
 	<div class="form-container">
 
 		<h1>운동 영상 수정</h1>
@@ -111,12 +114,11 @@ form button[type="button"]:hover {
 				</p>
 
 				<label for="title">제목:</label> <input type="text" id="title"
-					name="title" value="${video.title}" required><br>
-				<br> <label for="part">운동 부위:</label> <input type="text"
-					id="part" name="part" value="${video.part}" required><br>
-				<br> <label for="url">URL:</label> <input type="url" id="url"
-					name="url" value="${video.url}" required><br>
-				<br>
+					name="title" value="${video.title}" required><br> <br>
+				<label for="part">운동 부위:</label> <input type="text" id="part"
+					name="part" value="${video.part}" required><br> <br>
+				<label for="url">URL:</label> <input type="url" id="url" name="url"
+					value="${video.url}" required><br> <br>
 
 				<div class="button-group">
 					<button type="submit">수정 완료</button>
@@ -133,5 +135,6 @@ form button[type="button"]:hover {
 			</p>
 		</c:if>
 	</div>
+	<%@ include file="/WEB-INF/common/footer.jsp"%>
 </body>
 </html>

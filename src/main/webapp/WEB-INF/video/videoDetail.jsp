@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>상세 영상</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/css/common.css">
 <style>
 /* 기본 설정 */
 body {
@@ -155,6 +157,7 @@ h3 {
 </style>
 </head>
 <body>
+	<%@ include file="/WEB-INF/common/header.jsp"%>
 	<div class="container">
 		<h1>운동 영상 상세 정보</h1>
 
@@ -246,5 +249,6 @@ h3 {
 				돌아가기</a>
 		</p>
 	</div>
+	<%@ include file="/WEB-INF/common/footer.jsp"%>
 </body>
 </html>

@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>전체 영상 목록</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/css/common.css">
 <style>
 /* 기본 설정 */
 body {
@@ -117,6 +119,7 @@ td a:hover {
 </style>
 </head>
 <body>
+	<%@ include file="/WEB-INF/common/header.jsp"%>
 	<h1>전체 영상 목록</h1>
 
 	<p>
@@ -153,5 +156,6 @@ td a:hover {
 			<p class="no-videos">등록된 영상이 없습니다.</p>
 		</c:otherwise>
 	</c:choose>
+	<%@ include file="/WEB-INF/common/footer.jsp"%>
 </body>
 </html>

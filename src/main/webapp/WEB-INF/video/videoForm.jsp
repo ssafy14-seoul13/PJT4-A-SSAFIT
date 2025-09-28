@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>영상 등록</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/css/common.css">
 <style>
 /* 기본 설정 */
 body {
@@ -81,6 +83,7 @@ form button[type="button"]:hover {
 </style>
 </head>
 <body>
+	<%@ include file="/WEB-INF/common/header.jsp"%>
 	<div class="form-container">
 		<h1>새 운동 영상 등록</h1>
 
@@ -88,12 +91,10 @@ form button[type="button"]:hover {
 			action="${pageContext.request.contextPath}/video?act=videoCreate"
 			method="post">
 			<label for="title">제목:</label> <input type="text" id="title"
-				name="title" required><br>
-			<br> <label for="part">운동 부위:</label> <input type="text"
-				id="part" name="part" required><br>
+				name="title" required><br> <br> <label for="part">운동
+				부위:</label> <input type="text" id="part" name="part" required><br>
 			<br> <label for="url">URL:</label> <input type="url" id="url"
-				name="url" required><br>
-			<br>
+				name="url" required><br> <br>
 
 			<div class="button-group">
 				<button type="submit">등록</button>
@@ -102,5 +103,6 @@ form button[type="button"]:hover {
 			</div>
 		</form>
 	</div>
+	<%@ include file="/WEB-INF/common/footer.jsp"%>
 </body>
 </html>
