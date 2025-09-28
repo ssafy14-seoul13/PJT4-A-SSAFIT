@@ -67,7 +67,7 @@ public class ReviewController extends HttpServlet {
 		}
 	}
 	private void doReviewList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String vno = request.getParameter("vno"); // 영상 번호
+        int vno = Integer.parseInt(request.getParameter("vno")); // 영상 번호
         List<Review> list = reviewService.getReviewList(vno);
         request.setAttribute("reviewList", list);
         request.getRequestDispatcher("/WEB-INF/review/reviewList.jsp").forward(request, response);
@@ -85,7 +85,7 @@ public class ReviewController extends HttpServlet {
      * 리뷰 등록 처리 (act=reviewCreate)
      */
     private void doReviewCreate(HttpServletRequest request, HttpServletResponse response, User loginUser) throws ServletException, IOException {
-        String vno = request.getParameter("vno");
+        int vno = Integer.parseInt(request.getParameter("vno"));
         String title = request.getParameter("title"); 
         String content = request.getParameter("content");
         
@@ -151,7 +151,7 @@ public class ReviewController extends HttpServlet {
             return;
         }
         
-        String vno = existingReview.getVno();
+        int vno = existingReview.getVno();
         reviewService.removeReview(reviewNo);
         
         response.sendRedirect("video?act=videoDetail&no=" + vno);

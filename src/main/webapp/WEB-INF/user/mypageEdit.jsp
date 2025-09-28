@@ -10,13 +10,13 @@
 <body>
     <h1>회원정보 수정</h1>
 
-    <!-- 로그인하지 않은 경우 -->
+    <%-- 로그인하지 않은 경우 --%>
     <c:if test="${empty sessionScope.loginUser}">
         <p style="color:red;">로그인 후 이용 가능합니다.</p>
         <a href="user?act=loginForm">로그인 페이지로 이동</a>
     </c:if>
 
-    <!-- 로그인 한 경우 -->
+    <%-- 로그인 한 경우 --%>
     <c:if test="${not empty sessionScope.loginUser}">
     	<c:if test="${not empty errorMsg}">
     		<p style="color:red;">${errorMsg}</p>

@@ -20,8 +20,14 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 	}
 	
 	@Override
-	public List<Review> selectAll(String vno) {
-		return null;
+	public List<Review> selectAll(int vno) {
+		List<Review> reviews = new ArrayList<>();
+	    for (Review r : reviewList) {
+	        if (r.getVno() == vno) {
+	        	reviews.add(r);
+	        }
+	    }
+	    return reviews;
 	}
 	
 	@Override

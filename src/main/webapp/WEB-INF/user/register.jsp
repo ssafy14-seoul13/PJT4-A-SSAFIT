@@ -10,7 +10,7 @@
 <body>
     <h1>회원가입</h1>
 
-    <!-- 가입 실패 시 메시지 표시 -->
+    <%-- 가입 실패 시 메시지 표시 --%>
     <c:if test="${not empty errorMsg}">
         <div style="color:red;">${errorMsg}</div>
     </c:if>

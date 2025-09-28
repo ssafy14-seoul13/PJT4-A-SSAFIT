@@ -6,7 +6,7 @@ import com.ssafy.ssafit.model.dto.Review;
 
 public interface ReviewRepository {
 
-	List<Review> selectAll(String vno);
+	List<Review> selectAll(int vno);
 
 	Review selectOne(int no);
 
