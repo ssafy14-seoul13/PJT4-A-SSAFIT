@@ -10,7 +10,7 @@
 <body>
     <h1>로그인</h1>
 
-    <!-- 로그인 실패 시 메시지 표시 -->
+    <%-- 로그인 실패 시 메시지 표시 --%>
     <c:if test="${not empty errorMsg}">
         <div style="color:red;">${errorMsg}</div>
     </c:if>
