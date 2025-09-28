@@ -1,0 +1,130 @@
+[
+  {
+    "no": 1,
+    "id": "user01",
+    "password": "passUser01",
+    "savedVideoList": ["1", "3", "7"] 
+  },
+  {
+    "no": 2,
+    "id": "user02",
+    "password": "passUser02",
+    "savedVideoList": ["2", "4", "6", "8"]
+  },
+  {
+    "no": 3,
+    "id": "user03",
+    "password": "passUser03",
+    "savedVideoList": ["5", "6"]
+  },
+  {
+    "no": 4,
+    "id": "user04",
+    "password": "passUser04",
+    "savedVideoList": ["1", "2", "3", "4", "5", "6", "7", "8"]
+  },
+  {
+    "no": 5,
+    "id": "user05",
+    "password": "passUser05",
+    "savedVideoList": ["7", "8"]
+  },
+  {
+    "no": 6,
+    "id": "user06",
+    "password": "passUser06",
+    "savedVideoList": ["1"]
+  },
+  {
+    "no": 7,
+    "id": "user07",
+    "password": "passUser07",
+    "savedVideoList": ["3", "4"]
+  },
+  {
+    "no": 8,
+    "id": "user08",
+    "password": "passUser08",
+    "savedVideoList": []
+  },
+  {
+    "no": 9,
+    "id": "user09",
+    "password": "passUser09",
+    "savedVideoList": ["2", "5", "7"]
+  },
+  {
+    "no": 10,
+    "id": "user10",
+    "password": "passUser10",
+    "savedVideoList": ["6", "8", "3"]
+  },
+  {
+    "no": 11,
+    "id": "poweruser",
+    "password": "passPower11",
+    "savedVideoList": ["1", "5", "7"]
+  },
+  {
+    "no": 12,
+    "id": "dietking",
+    "password": "passDiet12",
+    "email": "dietking@example.com",
+    "savedVideoList": ["2", "4"]
+  },
+  {
+    "no": 13,
+    "id": "admin01",
+    "password": "passAdmin13",
+    "email": "admin01@example.com",
+    "savedVideoList": ["7", "8"]
+  },
+  {
+    "no": 14,
+    "id": "runner14",
+    "password": "passRunner14",
+    "email": "runner14@example.com",
+    "savedVideoList": ["5", "6"]
+  },
+  {
+    "no": 15,
+    "id": "tester15",
+    "password": "passTester15",
+    "email": "tester15@example.com",
+    "savedVideoList": []
+  },
+  {
+    "no": 16,
+    "id": "health_fan",
+    "password": "passHealth16",
+    "email": "health_fan@example.com",
+    "savedVideoList": ["1", "2", "3", "4"]
+  },
+  {
+    "no": 17,
+    "id": "newbie17",
+    "password": "passNewbie17",
+    "email": "newbie17@example.com",
+    "savedVideoList": ["7"]
+  },
+  {
+    "no": 18,
+    "id": "pro18",
+    "password": "passPro18",
+    "email": "pro18@example.com",
+    "savedVideoList": ["5", "7", "8"]
+  },
+  {
+    "no": 19,
+    "id": "lazy_guy",
+    "password": "passLazy19",
+    "email": "lazy_guy@example.com",
+    "savedVideoList": ["6"]
+  },
+  {
+    "no": 20,
+    "id": "active_gal",
+    "password": "passActive20",
+    "savedVideoList": ["1", "2", "3", "4", "5", "6", "7", "8"]
+  }
+]
