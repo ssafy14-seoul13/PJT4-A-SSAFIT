@@ -215,7 +215,9 @@ h3 {
 								${rv.content}
 								<div class="review-meta">
 									작성일:
-									<fmt:formatDate value="${rv.created_at}" pattern="yyyy-MM-dd" />
+									<c:if test="${not empty rv.created_at}">
+									    ${rv.created_at}
+                                    </c:if>
 								</div> <c:if
 									test="${not empty sessionScope.loginUser && rv.writer eq String.valueOf(sessionScope.loginUser.id)}">
 									<p class="review-action-group">

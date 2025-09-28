@@ -3,7 +3,10 @@ package com.ssafy.ssafit.controller;
 import java.io.IOException;
 import java.util.List;
 
+import com.ssafy.ssafit.model.dto.Review;
 import com.ssafy.ssafit.model.dto.Video;
+import com.ssafy.ssafit.model.service.ReviewService;
+import com.ssafy.ssafit.model.service.ReviewServiceImpl;
 import com.ssafy.ssafit.model.service.VideoService;
 import com.ssafy.ssafit.model.service.VideoServiceImpl;
 
@@ -19,6 +22,7 @@ public class VideoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private VideoService videoService = VideoServiceImpl.getInstance();
+	private ReviewService reviewService = ReviewServiceImpl.getInstance(); 
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,7 +63,7 @@ public class VideoController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("errorMsg", "처리 중 오류가 발생했습니다.");
-			req.getRequestDispatcher("/error.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/common/error.jsp").forward(req, resp);
 		}
 	}
 
@@ -112,10 +116,13 @@ public class VideoController extends HttpServlet {
 	}
 
 	private void doVideoDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			int no = Integer.parseInt(req.getParameter("no"));
-			Video video = videoService.getVideo(no);
+			int vno = Integer.parseInt(req.getParameter("no"));
+			Video video = videoService.getVideo(vno);
+			
+			List<Review> reviewList = reviewService.getReviewList(vno);
 			
 			req.setAttribute("video", video);
+			req.setAttribute("reviewList", reviewList);
 			req.getRequestDispatcher("/WEB-INF/video/videoDetail.jsp").forward(req, resp);
 
 	}
