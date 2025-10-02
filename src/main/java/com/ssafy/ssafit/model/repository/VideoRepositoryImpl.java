@@ -4,14 +4,21 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ssafy.ssafit.model.dto.Video;
+import com.ssafy.ssafit.util.DBUtil;
 
 public class VideoRepositoryImpl implements VideoRepository {
+	
+	private DBUtil util = DBUtil.getInstance();
 
 	// 싱글톤
 	private static VideoRepository instance = new VideoRepositoryImpl();
@@ -67,7 +74,30 @@ public class VideoRepositoryImpl implements VideoRepository {
 	
 	@Override
 	public List<Video> selectAll() {
-		return vidList;
+		String sql = "SELECT * FROM video";
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = util.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				Video video = new Video();
+				video.setNo(rs.getInt("no"));
+				video.setTitle(rs.getString("title"));
+				video.setPart(rs.getString("part"));
+				video.setUrl(rs.getString("url"));
+				
+				vidList.add(video);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			util.close(conn);
+		}
+		return new ArrayList<>(vidList);
 	}
 	
 	@Override
