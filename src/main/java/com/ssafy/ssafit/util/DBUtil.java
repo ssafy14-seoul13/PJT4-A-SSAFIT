@@ -15,7 +15,7 @@ public class DBUtil {
      * UTC(Coordinated Universal Time, 협정 세계시)는 세계 시간의 표준으로, 영국 그리니치 천문대를 기준으로 한 시간
      */
 	// DB와 연결하기위해 필요한 DB의 URL
-	private final String url = "jdbc:mysql://localhost:3306/ssafy_board?serverTimezone=UTC";
+	private final String url = "jdbc:mysql://localhost:3306/ssafit_a?serverTimezone=UTC";
 	// DB의 USER 이름
 	private final String username = "ssafy";
 	// 위 USER의 PASSWORD
@@ -32,7 +32,9 @@ public class DBUtil {
         // JDBC 드라이버를 로딩한다. 드라이버 로딩은 객체 생성 시 한번만 진행하도록 하자.
         try {
             Class.forName(driverName);
+            System.out.println("[DBUtil] DB 연결 성공");
         } catch (ClassNotFoundException e) {
+        	System.out.println("[DBUtil] DB 연결 실패");
             e.printStackTrace();
         }
     }
