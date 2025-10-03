@@ -61,8 +61,9 @@ public class UserController extends HttpServlet {
 	    String id = request.getParameter("id");
 	    String pw = request.getParameter("password");
 	    String confirmPw = request.getParameter("confirmPassword");
+	    String email = request.getParameter("email");
 
-	    String errorMsg = userService.register(id, pw, confirmPw);
+	    String errorMsg = userService.register(id, pw, confirmPw, email);
 
 	    // 회원가입 실패 시 에러 메시지 반환
 	    if (errorMsg != null) {

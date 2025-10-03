@@ -4,20 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-	private static int sequence = 1;
-	
 	private int no;
 	private String id;
 	private String password;	
-	private List<String> savedVideoList;
+	private String email;
+	private List<Integer> savedVideoList;
 
 	public User() {
 	}
 	
-	public User(String id, String password) {
-		this.no = sequence++;
+	public User(String id, String password, String email) {
 		this.id = id;
 		this.password = password;
+		this.email = email;
 		this.savedVideoList = new ArrayList<>();
 	}
 
@@ -45,17 +44,26 @@ public class User {
 		this.password = password;
 	}
 
-	public List<String> getSavedVideoList() {
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Integer> getSavedVideoList() {
 		return savedVideoList;
 	}
 
-	public void setSavedVideoList(List<String> savedVideoList) {
+	public void setSavedVideoList(List<Integer> savedVideoList) {
 		this.savedVideoList = savedVideoList;
 	}
 
 	@Override
 	public String toString() {
-		return "User [no=" + no + ", id=" + id + ", password=" + password + ", savedVideoList=" + savedVideoList + "]";
+		return "User [no=" + no + ", id=" + id + ", password=" + password + ", email=" + email + ", savedVideoList="
+				+ savedVideoList + "]";
 	}
-
+	
 }
