@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String register(String id, String pw, String confirmPw) {
+	public String register(String id, String pw, String confirmPw, String email) {
 	    if (id == null || pw == null || confirmPw == null 
 	        || id.trim().isEmpty() || pw.trim().isEmpty() || confirmPw.trim().isEmpty()) {
 	        return "아이디와 비밀번호는 필수로 입력해야 합니다.";
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 	        return "비밀번호가 일치하지 않습니다.";
 	    }
 
-	    repo.save(new User(id.trim(), pw.trim()));
+	    repo.save(new User(id.trim(), pw.trim(), email));
 	    return null; // null이면 회원가입 성공
 	}
 
