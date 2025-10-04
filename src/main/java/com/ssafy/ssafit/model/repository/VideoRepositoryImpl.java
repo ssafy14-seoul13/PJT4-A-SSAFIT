@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,15 +18,17 @@ import com.ssafy.ssafit.model.dto.Video;
 import com.ssafy.ssafit.util.DBUtil;
 
 public class VideoRepositoryImpl implements VideoRepository {
-	
+
 	private DBUtil util = DBUtil.getInstance();
 
 	// 싱글톤
 	private static final VideoRepository INSTANCE = new VideoRepositoryImpl();
-	private VideoRepositoryImpl() {}
-	
+
+	private VideoRepositoryImpl() {
+	}
+
 //	private int nextNo = 9;
-	
+
 //	private VideoRepositoryImpl() {
 //		loadVideoDataFromJson();
 //	}
@@ -33,7 +36,7 @@ public class VideoRepositoryImpl implements VideoRepository {
 	public static VideoRepository getInstance() {
 		return INSTANCE;
 	}
-	
+
 //	private boolean loadVideoDataFromJson() {
 //        String resourcePath = "data/video.json";
 //        
@@ -72,33 +75,33 @@ public class VideoRepositoryImpl implements VideoRepository {
 //            return false;
 //        }
 //    }
-	
+
 	@Override
 	public List<Video> selectAll() {
 		String sql = "SELECT * FROM video";
-		
+
 		// 메서드 호출 시마다 새로운 리스트 생성해야 함
 		List<Video> vidList = new ArrayList<>();
-		
+
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = util.getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				Video video = new Video();
 				video.setNo(rs.getInt("no"));
 				video.setTitle(rs.getString("title"));
 				video.setPart(rs.getString("part"));
 				video.setUrl(rs.getString("url"));
-				
+
 				vidList.add(video);
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("예외 발생");
 			e.printStackTrace();
@@ -107,17 +110,40 @@ public class VideoRepositoryImpl implements VideoRepository {
 		}
 		return vidList;
 	}
-	
-//	@Override
-//	public Video selectOne(int no) {
-//		for(Video video : vidList) {
-//			if(video.getNo() == no) {
-//				return video;
-//			}
-//		}
-//		return null;
-//	}
-	
+
+	@Override
+	public Video selectOne(int no) {
+		String sql = "SELECT *" + " FROM video" + " WHERE no=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		Video video = null;
+
+		try {
+			conn = util.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				video = new Video();
+				video.setNo(rs.getInt(1));
+				video.setTitle(rs.getString(2));
+				video.setPart(rs.getString(3));
+				video.setUrl(rs.getString(4));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			util.close(rs, pstmt, conn);
+		}
+		return video;
+	}
+
 //	@Override
 //	public void addVideo(Video video) {
 //		video.setNo(nextNo++);
@@ -133,7 +159,7 @@ public class VideoRepositoryImpl implements VideoRepository {
 //			target.setUrl(video.getUrl());
 //		}
 //	}
-	
+
 //	@Override
 //	public void deleteVideo(int no) {
 //		for(int i = vidList.size() - 1; i >= 0; i--) {
@@ -145,6 +171,5 @@ public class VideoRepositoryImpl implements VideoRepository {
 //			}
 //		}
 //	}
-	
-	
+
 }
