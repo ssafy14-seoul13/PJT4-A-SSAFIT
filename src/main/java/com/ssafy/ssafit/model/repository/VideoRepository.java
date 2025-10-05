@@ -14,12 +14,12 @@ public interface VideoRepository {
 	
 	// 영상 추가
 	void addVideo(Video video);
-//	
-//	// 영상 수정
-//	void updateVideo(Video video);
-//
-//	// 영상 삭제
-//	void deleteVideo(int no);
+	
+	// 영상 수정
+	void updateVideo(Video video);
+
+	// 영상 삭제
+	void deleteVideo(int no);
 
 
 }

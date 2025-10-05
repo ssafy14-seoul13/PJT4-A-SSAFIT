@@ -14,11 +14,11 @@ public interface VideoService {
 
 	// 영상 추가
 	void registerVideo(Video video);
-//
-//	// 영상 수정
-//	void editVideo(Video video);
-//
-//	// 영상 삭제
-//	void deleteVideo(int no);
+
+	// 영상 수정
+	void editVideo(Video video);
+
+	// 영상 삭제
+	void deleteVideo(int no);
 
 }

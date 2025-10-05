@@ -32,14 +32,14 @@ public class VideoServiceImpl implements VideoService {
 	public void registerVideo(Video video) {
 		videoRepository.addVideo(video);
 	}
-//	
-//	@Override
-//	public void editVideo(Video video) {
-//		videoRepository.updateVideo(video);
-//	}
-//	
-//	@Override
-//	public void deleteVideo(int no) {
-//		videoRepository.deleteVideo(no);
-//	}
+	
+	@Override
+	public void editVideo(Video video) {
+		videoRepository.updateVideo(video);
+	}
+	
+	@Override
+	public void deleteVideo(int no) {
+		videoRepository.deleteVideo(no);
+	}
 }
