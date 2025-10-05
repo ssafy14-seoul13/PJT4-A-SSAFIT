@@ -41,21 +41,21 @@ public class VideoController extends HttpServlet {
 			case "videoForm":
 				doVideoForm(req, resp);
 				break;
-			case "videoCreate":
-				doVideoCreate(req, resp);
-				break;
+//			case "videoCreate":
+//				doVideoCreate(req, resp);
+//				break;
 			case "videoDetail":
 				doVideoDetail(req, resp);
 				break;
-			case "videoEditForm":
-				doVideoEditForm(req, resp);
-				break;
-			case "videoUpdate":
-				doVideoUpdate(req, resp);
-				break;
-			case "videoDelete":
-				doVideoDelete(req, resp);
-				break;
+//			case "videoEditForm":
+//				doVideoEditForm(req, resp);
+//				break;
+//			case "videoUpdate":
+//				doVideoUpdate(req, resp);
+//				break;
+//			case "videoDelete":
+//				doVideoDelete(req, resp);
+//				break;
 			default:
 				resp.sendRedirect("index.jsp");
 				break;
@@ -67,53 +67,53 @@ public class VideoController extends HttpServlet {
 		}
 	}
 
-	private void doVideoCreate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String title = req.getParameter("title");
-		String part = req.getParameter("part");
-		String url = req.getParameter("url");
+//	private void doVideoCreate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+//		String title = req.getParameter("title");
+//		String part = req.getParameter("part");
+//		String url = req.getParameter("url");
+//
+//		Video video = new Video();
+//		video.setTitle(title);
+//		video.setPart(part);
+//		video.setUrl(url);
+//
+//		videoService.registerVideo(video);
+//
+//		resp.sendRedirect("video?act=list");
+//
+//	}
 
-		Video video = new Video();
-		video.setTitle(title);
-		video.setPart(part);
-		video.setUrl(url);
+//	private void doVideoDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+//		int no = Integer.parseInt(req.getParameter("no"));
+//		videoService.deleteVideo(no);
+//		
+//		resp.sendRedirect("video?act=list");
+//
+//	}
 
-		videoService.registerVideo(video);
+//	private void doVideoUpdate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+//		int no = Integer.parseInt(req.getParameter("no"));
+//		String title = req.getParameter("title");
+//		String part = req.getParameter("part");
+//		String url = req.getParameter("url");
+//		
+//		Video video = new Video(no, title, part, url);
+//		
+//		videoService.editVideo(video);
+//		
+//		resp.sendRedirect("video?act=videoDetail&no=" + no);
+//		
+//
+//	}
 
-		resp.sendRedirect("video?act=list");
-
-	}
-
-	private void doVideoDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		int no = Integer.parseInt(req.getParameter("no"));
-		videoService.deleteVideo(no);
-		
-		resp.sendRedirect("video?act=list");
-
-	}
-
-	private void doVideoUpdate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		int no = Integer.parseInt(req.getParameter("no"));
-		String title = req.getParameter("title");
-		String part = req.getParameter("part");
-		String url = req.getParameter("url");
-		
-		Video video = new Video(no, title, part, url);
-		
-		videoService.editVideo(video);
-		
-		resp.sendRedirect("video?act=videoDetail&no=" + no);
-		
-
-	}
-
-	private void doVideoEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int no = Integer.parseInt(req.getParameter("no"));
-		Video video = videoService.getVideo(no);
-		
-		req.setAttribute("video", video);
-		req.getRequestDispatcher("/WEB-INF/video/videoEdit.jsp").forward(req, resp);
-
-	}
+//	private void doVideoEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		int no = Integer.parseInt(req.getParameter("no"));
+//		Video video = videoService.getVideo(no);
+//		
+//		req.setAttribute("video", video);
+//		req.getRequestDispatcher("/WEB-INF/video/videoEdit.jsp").forward(req, resp);
+//
+//	}
 
 	private void doVideoDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			int vno = Integer.parseInt(req.getParameter("no"));

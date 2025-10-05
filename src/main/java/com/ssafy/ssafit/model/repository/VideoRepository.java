@@ -8,9 +8,9 @@ public interface VideoRepository {
 
 	// 전체 영상 조회
 	List<Video> selectAll();
-//
-//	// 개별 영상 조회
-//	Video selectOne(int no);
+
+	// 개별 영상 조회
+	Video selectOne(int no);
 //	
 //	// 영상 추가
 //	void addVideo(Video video);
