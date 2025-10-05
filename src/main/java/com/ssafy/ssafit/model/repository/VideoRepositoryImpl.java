@@ -144,32 +144,87 @@ public class VideoRepositoryImpl implements VideoRepository {
 		return video;
 	}
 
-//	@Override
-//	public void addVideo(Video video) {
-//		video.setNo(nextNo++);
-//		vidList.add(video);
-//	}
-//	
-//	@Override
-//	public void updateVideo(Video video) {
-//		Video target = selectOne(video.getNo());
-//		if(target != null) {
-//			target.setTitle(video.getTitle());
-//			target.setPart(video.getPart());
-//			target.setUrl(video.getUrl());
-//		}
-//	}
+	@Override
+	public void addVideo(Video video) {
+		String sql = "INSERT INTO video (title, part, url) VALUES (?, ?, ?)";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
 
-//	@Override
-//	public void deleteVideo(int no) {
-//		for(int i = vidList.size() - 1; i >= 0; i--) {
-//			Video video = vidList.get(i);
-//			
-//			if(video.getNo() == no) {
-//				vidList.remove(i);
-//				return;
-//			}
-//		}
-//	}
+			try {
+				conn = util.getConnection();
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, video.getTitle());
+				pstmt.setString(2, video.getPart());
+				pstmt.setString(3, video.getUrl());
+				
+				int result = pstmt.executeUpdate();
+				
+				System.out.println("등록 완료: " + result);
+				
+			} catch (SQLException e) {
+				System.out.println("등록 실패");
+				e.printStackTrace();
+			} finally {
+				util.close(pstmt, conn);
+			}
+			
+
+	}
+	
+	@Override
+	public void updateVideo(Video video) {
+		
+		String sql = "UPDATE video SET title=?, part=?, url=? WHERE no=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = util.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, video.getTitle());
+			pstmt.setString(2, video.getPart());
+			pstmt.setString(3, video.getUrl());
+			pstmt.setInt(4, video.getNo());
+			
+			pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			System.out.println("수정 실패");
+			e.printStackTrace();
+		} finally {
+			util.close(pstmt, conn);
+		}
+	}
+
+	@Override
+	public void deleteVideo(int no) {
+		
+		String sql = "DELETE FROM video WHERE no=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = util.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("삭제 실패");
+			e.printStackTrace();
+		} finally {
+			util.close(pstmt, conn);
+		}
+	}
 
 }

@@ -11,15 +11,15 @@ public interface VideoRepository {
 
 	// 개별 영상 조회
 	Video selectOne(int no);
-//	
-//	// 영상 추가
-//	void addVideo(Video video);
-//	
-//	// 영상 수정
-//	void updateVideo(Video video);
-//
-//	// 영상 삭제
-//	void deleteVideo(int no);
+	
+	// 영상 추가
+	void addVideo(Video video);
+	
+	// 영상 수정
+	void updateVideo(Video video);
+
+	// 영상 삭제
+	void deleteVideo(int no);
 
 
 }
