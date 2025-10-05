@@ -41,9 +41,9 @@ public class VideoController extends HttpServlet {
 			case "videoForm":
 				doVideoForm(req, resp);
 				break;
-//			case "videoCreate":
-//				doVideoCreate(req, resp);
-//				break;
+			case "videoCreate":
+				doVideoCreate(req, resp);
+				break;
 			case "videoDetail":
 				doVideoDetail(req, resp);
 				break;
@@ -67,21 +67,21 @@ public class VideoController extends HttpServlet {
 		}
 	}
 
-//	private void doVideoCreate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-//		String title = req.getParameter("title");
-//		String part = req.getParameter("part");
-//		String url = req.getParameter("url");
-//
-//		Video video = new Video();
-//		video.setTitle(title);
-//		video.setPart(part);
-//		video.setUrl(url);
-//
-//		videoService.registerVideo(video);
-//
-//		resp.sendRedirect("video?act=list");
-//
-//	}
+	private void doVideoCreate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		String title = req.getParameter("title");
+		String part = req.getParameter("part");
+		String url = req.getParameter("url");
+
+		Video video = new Video();
+		video.setTitle(title);
+		video.setPart(part);
+		video.setUrl(url);
+
+		videoService.registerVideo(video);
+
+		resp.sendRedirect("video?act=list");
+
+	}
 
 //	private void doVideoDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 //		int no = Integer.parseInt(req.getParameter("no"));

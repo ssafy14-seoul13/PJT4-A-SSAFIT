@@ -11,9 +11,9 @@ public interface VideoService {
 
 	// 개별 영상 조회
 	Video getVideo(int no);
-//
-//	// 영상 추가
-//	void registerVideo(Video video);
+
+	// 영상 추가
+	void registerVideo(Video video);
 //
 //	// 영상 수정
 //	void editVideo(Video video);

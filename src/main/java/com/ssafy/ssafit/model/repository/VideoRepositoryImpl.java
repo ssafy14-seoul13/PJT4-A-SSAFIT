@@ -144,12 +144,37 @@ public class VideoRepositoryImpl implements VideoRepository {
 		return video;
 	}
 
-//	@Override
-//	public void addVideo(Video video) {
-//		video.setNo(nextNo++);
-//		vidList.add(video);
-//	}
-//	
+	@Override
+	public void addVideo(Video video) {
+		String sql = "INSERT INTO video (title, part, url) VALUES (?, ?, ?)";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+
+			try {
+				conn = util.getConnection();
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, video.getTitle());
+				pstmt.setString(2, video.getPart());
+				pstmt.setString(3, video.getUrl());
+				
+				int result = pstmt.executeUpdate();
+				
+				System.out.println("등록 완료: " + result);
+				
+			} catch (SQLException e) {
+				System.out.println("등록 실패");
+				e.printStackTrace();
+			} finally {
+				util.close(pstmt, conn);
+			}
+			
+
+	}
+	
 //	@Override
 //	public void updateVideo(Video video) {
 //		Video target = selectOne(video.getNo());

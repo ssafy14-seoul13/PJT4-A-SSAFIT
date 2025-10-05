@@ -27,11 +27,11 @@ public class VideoServiceImpl implements VideoService {
 	public Video getVideo(int no) {
 		return videoRepository.selectOne(no);
 	}
-//	
-//	@Override
-//	public void registerVideo(Video video) {
-//		videoRepository.addVideo(video);
-//	}
+	
+	@Override
+	public void registerVideo(Video video) {
+		videoRepository.addVideo(video);
+	}
 //	
 //	@Override
 //	public void editVideo(Video video) {
